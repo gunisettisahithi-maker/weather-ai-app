@@ -72,7 +72,9 @@ def gemini_calling(city, dataa):
         # api_calling(city)
         # print(data)
 
-        client = genai.Client(api_key="AIzaSyDdZZTvkAXcXgV8dXNpnNCn212ol27ZikM")
+        import os
+        client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    
         with st.spinner("Loading AI suggestions 🤖..."):
 
           response = client.models.generate_content(
@@ -89,3 +91,4 @@ if ai_sugg:
          st.write(gemini_calling(city, dataa))
     else:
         st.warning("Please submit city first..")
+        
